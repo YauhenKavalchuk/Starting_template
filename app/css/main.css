@@ -1,0 +1,57 @@
+/*********************************************		@IMPORT
+\*********************************************/
+/*********************************************		@IMPORT
+\*********************************************/
+/*********************************************		BUTTONS
+\*********************************************/
+/*********************************************		MAIN STYLE
+\*********************************************/
+body {
+  font-family: sans-serif;
+  font-size: 0.75em;
+  min-width: 320px;
+  position: relative; }
+
+.hidden {
+  display: none; }
+
+.carousel img {
+  width: 100%;
+  height: auto; }
+
+/*********************************************		TYPOGRAPHY
+\*********************************************/
+/*********************************************		SECTION
+\*********************************************/
+/*********************************************		MEDIA
+\*********************************************/
+/*********************************************		@IMPORT
+\*********************************************/
+/*********************************************		Desktop First Method
+\*********************************************/
+/* Large Devices, Wide Screens */
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  /*Disable Animation on Mobile Devices*/
+  .animated {
+    /*CSS transitions*/
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    animation: none !important; } }
+
+/* Custom, iPhone Retina */
+/*********************************************		Mobile First Method
+\*********************************************/
+/* Custom, iPhone Retina */
+/* Extra Small Devices, Phones */
+/* Small Devices, Tablets */
+/* Medium Devices, Desktops */
+/* Large Devices, Wide Screens */
