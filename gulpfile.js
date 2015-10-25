@@ -6,7 +6,10 @@ var gulp = require("gulp"),
     bourbon = require('node-bourbon'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
-    rename = require("gulp-rename");
+    rename = require("gulp-rename"),
+    gulpif = require('gulp-if'),
+    clean = require('gulp-clean'),
+    useref = require('gulp-useref');
 
 // Server
 gulp.task('connect', function() {
@@ -29,7 +32,6 @@ gulp.task('scss', function () {
   gulp.src('./app/sass/*.scss')
     .pipe(sass({includePaths: require('node-bourbon').includePaths}).on('error', sass.logError))
     .pipe(autoprefixer({browsers: ['last 5 versions'], cascade: false}))
-    //.pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('app/css'))
     .pipe(connect.reload());
 });
@@ -37,9 +39,25 @@ gulp.task('scss', function () {
 // JS
 gulp.task('js', function() {
   return gulp.src('./app/js/common.js')
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('app/js/'));
+    .pipe(connect.reload()); 
+});
+
+// images
+gulp.task('images', function () {
+    return gulp.src('./app/img/**/*')
+        .pipe(gulp.dest('dist/img'))
+});
+
+// fonts
+gulp.task('fonts', function () {
+    return gulp.src('./app/fonts/**/*')
+        .pipe(gulp.dest('dist/fonts'))
+});
+
+// libs-dev
+gulp.task('libs-dev', function () {
+    return gulp.src('./app/libs-dev/**/*')
+        .pipe(gulp.dest('dist/libs-dev'))
 });
 
 // Watch
@@ -49,5 +67,26 @@ gulp.task('watch', function () {
   gulp.watch(['./app/js/*.js'], ['js']);
 });
 
-// Default
+//Clean
+gulp.task('clean', function () {
+    return gulp.src('dist', {read: false})
+        .pipe(clean());
+});
+
+//Build
+gulp.task('build', ['clean'], function () {
+    gulp.start('images');
+    gulp.start('fonts');
+    gulp.start('libs-dev');
+    var assets = useref.assets();
+     return gulp.src('app/*.html')
+        .pipe(assets)
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.css', minifyCss()))
+        .pipe(assets.restore())
+        .pipe(useref())
+        .pipe(gulp.dest('./dist'));
+});
+
+// Local
 gulp.task('default', ['connect', 'watch']);

@@ -10,12 +10,6 @@ $(document).ready(function() {
 		return true;
 	}));
 	
-	//Equalheight
-	//Exemple:
-	//var eqElement = ".cat_container > div, .home_news > div"
-	var eqElement = ".element"
-	$(window).load(function(){equalheight(eqElement);}).resize(function(){equalheight(eqElement);});
-
 	//Carousel: http://owlgraphic.com/owlcarousel/
 	function carousel_1() {
 		var owl = $(".carousel");
@@ -26,6 +20,7 @@ $(document).ready(function() {
 			dots : true,
 			singleItem : true
 		});
+	};
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/

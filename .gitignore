@@ -1,3 +1,4 @@
-app/libs
 node_modules
+app/libs
 app/sass-cash
+dist
