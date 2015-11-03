@@ -10,6 +10,7 @@ var gulp = require("gulp"),
     wiredep = require('wiredep').stream,
     gulpif = require('gulp-if'),
     clean = require('gulp-clean'),
+    imagemin = require('gulp-imagemin'),
     useref = require('gulp-useref');
 
 // Server
@@ -50,6 +51,10 @@ gulp.task('js', function() {
 // images
 gulp.task('images', function () {
     return gulp.src('./app/img/**/*')
+    		.pipe(imagemin({
+          	progressive: true,
+           	interlaced: true
+         	}))
         .pipe(gulp.dest('dist/img'))
 });
 
@@ -59,10 +64,10 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('dist/fonts'))
 });
 
-// libs-dev
-gulp.task('libs-dev', function () {
-    return gulp.src('./app/libs-dev/**/*')
-        .pipe(gulp.dest('dist/libs-dev'))
+// libs
+gulp.task('libs', function () {
+    return gulp.src('./app/libs/**/*')
+        .pipe(gulp.dest('dist/libs'))
 });
 
 // Watch
@@ -82,12 +87,12 @@ gulp.task('clean', function () {
 gulp.task('build', ['clean'], function () {
     gulp.start('images');
     gulp.start('fonts');
-    gulp.start('libs-dev');
+    gulp.start('libs');
     var assets = useref.assets();
      return gulp.src('app/*.html')
         .pipe(assets)
         .pipe(gulpif('*.js', uglify()))
-        .pipe(gulpif('*.css', minifyCss()))
+        .pipe(gulpif('*.css', minifyCss({compatibility: 'ie8'})))
         .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('./dist'));
