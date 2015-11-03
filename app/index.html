@@ -18,11 +18,16 @@
 	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+	
 	<!-- build:css css/libs.min.css -->
-	<link rel="stylesheet" href="libs-dev/bootstrap/bootstrap-grid-3.3.1.min.css">
-	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="libs/owl-carousel/owl-carousel/owl.carousel.css">
+	<!-- bower:css -->
+	<link rel="stylesheet" href="libs/normalize-css/normalize.css" />
+	<!-- endbower -->
+	<link rel="stylesheet" href="bower/owl-carousel/owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid-3.3.1.min.css">
+	<link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
 	<!-- endbuild -->
+
 	<!-- build:css css/main.min.css -->
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/header.css">
@@ -36,17 +41,20 @@
 	<div class="hidden"></div>
 
 	<!--[if lt IE 9]>
-	<script src="libs/es5-shim/es5-shim.min.js"></script>
-	<script src="libs/html5shiv/dist/html5shiv.min.js"></script>
-	<script src="libs/html5shiv/dist/html5shiv-printshiv.min.js"></script>
-	<script src="libs/respond/src/respond.js"></script>
+	<script src="bower/es5-shim/es5-shim.min.js"></script>
+	<script src="bower/html5shiv/dist/html5shiv.min.js"></script>
+	<script src="bower/html5shiv/dist/html5shiv-printshiv.min.js"></script>
+	<script src="bower/respond/src/respond.js"></script>
 	<![endif]-->
-	
+
 	<!-- build:js js/libs.min.js -->
+	<!-- bower:js -->
+	<script src="libs/jquery/dist/jquery.js"></script>
+	<script src="libs/waypoints/lib/noframework.waypoints.js"></script>
+	<script src="libs/respond/dest/respond.src.js"></script>
+	<script src="libs/matchHeight/jquery.matchHeight-min.js"></script>
+	<!-- endbower -->
 	<script src="libs/modernizer/modernizr.js"></script>
-	<script src="libs/jquery/dist/jquery.min.js"></script>
-	<script src="libs/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="libs/equalheight/dist/jquery.equalheight.js"></script>
 	<script src="libs/owl-carousel//owl-carousel/owl.carousel.min.js"></script>
 	<!-- endbuild -->
 	<!-- build:js js/common.min.js -->

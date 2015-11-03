@@ -9,21 +9,16 @@ $(document).ready(function() {
 		yaCounterXXXXXXXX.reachGoal("goal");
 		return true;
 	}));
+
+	//jquery.matchHeight.js
+	//Docs: https://github.com/liabru/jquery-match-height
+	$(elements).matchHeight(options);
 	
 	//Carousel: http://owlgraphic.com/owlcarousel/
-	function carousel_1() {
-		var owl = $(".carousel");
-		owl.owlCarousel({
-			items : 1,
-			loop : true,
-			autoHeight : true,
-			dots : true,
-			singleItem : true
-		});
-	};
+	$("#owl-example").owlCarousel();
 
-	//Аякс отправка форм
-	//Документация: http://api.jquery.com/jquery.ajax/
+	//AJAX forms send
+	//Docs: http://api.jquery.com/jquery.ajax/
 	$("form").submit(function() {
 		$.ajax({
 			type: "GET",

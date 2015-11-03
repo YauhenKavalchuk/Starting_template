@@ -7,6 +7,7 @@ var gulp = require("gulp"),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     rename = require("gulp-rename"),
+    wiredep = require('wiredep').stream,
     gulpif = require('gulp-if'),
     clean = require('gulp-clean'),
     useref = require('gulp-useref');
@@ -23,7 +24,11 @@ gulp.task('connect', function() {
 
 // HTML
 gulp.task('html', function () {
-  gulp.src('./app/*.html')
+  gulp.src('./app/index.html')
+    .pipe(wiredep({
+      directory: "./app/bower/"
+    }))
+    .pipe(gulp.dest('./app/'))
     .pipe(connect.reload());
 });
 
