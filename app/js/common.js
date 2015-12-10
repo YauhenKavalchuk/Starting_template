@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	//jquery.matchHeight.js
 	//Docs: https://github.com/liabru/jquery-match-height
-	$(elements).matchHeight(options);
+	$('element').matchHeight();
 	
 	//Carousel: http://owlgraphic.com/owlcarousel/
 	$("#owl-example").owlCarousel();

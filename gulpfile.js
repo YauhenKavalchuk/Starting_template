@@ -10,7 +10,6 @@ var gulp = require("gulp"),
     wiredep = require('wiredep').stream,
     gulpif = require('gulp-if'),
     clean = require('gulp-clean'),
-    imagemin = require('gulp-imagemin'),
     useref = require('gulp-useref');
 
 // Server
@@ -51,10 +50,6 @@ gulp.task('js', function() {
 // images
 gulp.task('images', function () {
     return gulp.src('./app/img/**/*')
-    		.pipe(imagemin({
-          	progressive: true,
-           	interlaced: true
-         	}))
         .pipe(gulp.dest('dist/img'))
 });
 
