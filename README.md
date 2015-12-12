@@ -7,10 +7,8 @@ Starting template is a front-end HTML5 template. Featuring the latest technologi
 <ul>
 	<li>npm i</li>
 	<li>bower i</li>
-	<p>Run project:</p>
-	<li>gulp</li>
-	<p>Build project:</p>
-	<li>gulp build</li>
+	<li>gulp (Run project)</li>
+	<li>gulp build (Build project)</li>
 </ul>
 
 ##SASS Partials
