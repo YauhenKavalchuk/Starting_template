@@ -1,3 +1,5 @@
+'use strict';
+
 /*******************************************************************************\
 		1.	DEPENDENCIES
 \*******************************************************************************/
@@ -20,7 +22,7 @@ var gulp = require("gulp"),																// gulp core
 \*******************************************************************************/
 
 gulp.task('connect', ['watch'], function() {							// files to inject
-	 browserSync.init({
+	browserSync.init({
 		server: {
 			baseDir: "./app/"																		// base dir
 		}
@@ -76,8 +78,8 @@ gulp.task('js', function() {
 \*******************************************************************************/
 
 gulp.task('images', function () {
-		return gulp.src('./app/img/**/*')											// get the files
-				.pipe(gulp.dest('dist/img'))											// where to put the file
+	return gulp.src('./app/img/**/*')												// get the files
+		.pipe(gulp.dest('dist/img'))													// where to put the file
 });
 
 /*******************************************************************************\
@@ -85,8 +87,8 @@ gulp.task('images', function () {
 \*******************************************************************************/
 
 gulp.task('fonts', function () {
-		return gulp.src('./app/fonts/**/*')										// get the files
-				.pipe(gulp.dest('dist/fonts'))										// where to put the file
+	return gulp.src('./app/fonts/**/*')											// get the files
+		.pipe(gulp.dest('dist/fonts'))												// where to put the file
 });
 
 /*******************************************************************************\
@@ -94,37 +96,65 @@ gulp.task('fonts', function () {
 \*******************************************************************************/
 
 gulp.task('libs', function () {
-		return gulp.src('./app/libs/**/*')										// get the files
-				.pipe(gulp.dest('dist/libs'))											// where to put the file
+	return gulp.src('./app/libs/**/*')											// get the files
+		.pipe(gulp.dest('dist/libs'))													// where to put the file
 });
 
 /*******************************************************************************\
-		10.	BUILD TASKS
+		10.	EXTRASS TASKS (ROOT FILES, EXCEPT HTML-FILES)
+\*******************************************************************************/
+
+gulp.task('extrass', function () {
+	return gulp.src([																				// get the files
+		'app/*.*',
+		'!app/*.html'																					// exept '.html'
+	]).pipe(gulp.dest('dist'))															// where to put the file														
+});
+
+/*******************************************************************************\
+		11.	BUILD TASKS
 \*******************************************************************************/
 
 // Clean
 gulp.task('clean', function () {
-		return gulp.src('dist', {read: false})
-				.pipe(clean());																		// clean dir
+	return gulp.src('dist', {read: false})
+		.pipe(clean());																				// clean dir
 });
 
 // Build
 gulp.task('build', ['clean'], function () {
-		gulp.start('images');																	// images task
-		gulp.start('fonts');																	// fonts task
-		gulp.start('libs');																		// libs task
-		var assets = useref.assets();
-		 return gulp.src('app/*.html')
-				.pipe(assets)
-				.pipe(gulpif('*.js', uglify()))
-				.pipe(gulpif('*.css', minifyCss({compatibility: 'ie8'})))
-				.pipe(assets.restore())
-				.pipe(useref())
-				.pipe(gulp.dest('./dist'));
+	gulp.start('images');																		// images task
+	gulp.start('fonts');																		// fonts task
+	gulp.start('libs');																			// libs task
+	gulp.start('extrass');
+	var assets = useref.assets();
+		return gulp.src('app/*.html')
+			.pipe(assets)
+			.pipe(gulpif('*.js', uglify()))
+			.pipe(gulpif('*.css', minifyCss({compatibility: 'ie8'})))
+			.pipe(assets.restore())
+			.pipe(useref())
+			.pipe(gulp.dest('./dist'));
 });
 
 /*******************************************************************************\
-		11.	DEFAULT TASKS
+		12.	DEFAULT TASKS
 \*******************************************************************************/
 
 gulp.task('default', ['connect', 'watch']);
+
+/*******************************************************************************\
+		13.	DEBUGING FUNCTION
+\*******************************************************************************/
+
+var log = function(error) {
+	console.log([
+		'',
+		"-----------ERROR MESSAGE START----------",
+		("[" + error.name + " in " + error.plugin + "]"),
+		error.message,
+		"-----------ERROR MESSAGE END----------",
+		''
+	].join('\n'));
+	this.end();
+}
