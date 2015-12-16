@@ -17,6 +17,10 @@ $(document).ready(function() {
 	//Carousel: http://owlgraphic.com/owlcarousel/
 	$("#owl-example").owlCarousel();
 
+	//BPopUp windows
+	//Docs: http://dinbror.dk/bpopup/
+	$('.element_to_pop_up').bPopup();
+
 	//AJAX forms send
 	//Docs: http://api.jquery.com/jquery.ajax/
 	$("form").submit(function() {
