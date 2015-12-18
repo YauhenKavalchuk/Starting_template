@@ -7,11 +7,13 @@
 var gulp = require("gulp"),																// gulp core
 		sass = require('gulp-sass'),													// sass compiler
 		gulpif = require('gulp-if'),													// conditionally run a task
+		jade = require('gulp-jade'),													// jade compiler							
 		clean = require('gulp-clean'),												// removing files and folders
 		uglify = require('gulp-uglify'),											// uglifies the js
 		rename = require("gulp-rename"),											// rename files
 		useref = require('gulp-useref'),											// parse build blocks in HTML files to replace references
 		bourbon = require('node-bourbon'),										// bourbon libruary
+		prettify = require('gulp-prettify'),									// prettify, format, beautify HTML
 		wiredep = require('wiredep').stream,									// bower dependencies to your source code
 		minifyCss = require('gulp-minify-css'),								// minify the css files
 		autoprefixer = require('gulp-autoprefixer'),					// sets missing browserprefixes
@@ -21,7 +23,7 @@ var gulp = require("gulp"),																// gulp core
 		2.	BROWSERSYNC (LOCAL SERVEVR)
 \*******************************************************************************/
 
-gulp.task('connect', ['watch'], function() {							// files to inject
+gulp.task('connect', ['jade', 'watch'], function() {			// files to inject
 	browserSync.init({
 		server: {
 			baseDir: "./app/"																		// base dir
@@ -30,26 +32,39 @@ gulp.task('connect', ['watch'], function() {							// files to inject
 });
 
 /*******************************************************************************\
+		2.	COMPILE JADE IN TO HTML
+\*******************************************************************************/
+
+gulp.task('jade', function() {
+  gulp.src('./app/template/pages/*.jade')
+    .pipe(jade())
+    .on('error', log)
+    .pipe(prettify({indent_size: 2}))
+    .pipe(gulp.dest('./app/'))
+    .pipe(browserSync.stream());
+});
+
+/*******************************************************************************\
 		3.	WATCHER (WATCHING FILE CHANGES)
 \*******************************************************************************/
 
 gulp.task('watch', function () {
-	gulp.watch(['./app/*.html'], ['html']),									// watching changes in HTML
-	gulp.watch(['./app/sass/*.scss'], ['scss']),						// watching changes in SASS
-	gulp.watch(['./app/js/*.js'], ['js']);									// watching changes in JS
+	gulp.watch(['./app/template/**/*.jade'], ['jade']);			// watching changes in JADE
+	gulp.watch('bower.json', ['wiredep']);									// watching changes in Wiredep
+	gulp.watch(['./app/sass/*.scss'], ['scss']);						
+	gulp.watch(['./app/js/*.js'], ['js']);
 });
 
 /*******************************************************************************\
-		4.	HTML TASKS
+		4.	WIREDEP TASKS
 \*******************************************************************************/
 
-gulp.task('html', function () {
-	gulp.src('./app/index.html')														// get the files
+gulp.task('wiredep', function () {
+	gulp.src('./app/template/pages/*.jade')														
 		.pipe(wiredep({
-			directory: "./app/bower/"														// dir where wiredep get files 
+			ignorePath: /^(\.\.\/)*\.\./														 
 		}))
-		.pipe(gulp.dest('./app/'))														// where to put the file
-		.pipe(browserSync.stream());													// browsersync stream
+		.pipe(gulp.dest('./app/template/pages/'))																											
 });
 
 /*******************************************************************************\
