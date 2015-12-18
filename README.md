@@ -28,7 +28,7 @@ Starting template is a front-end HTML5 template. Featuring the latest technologi
 <p>Base is constantly updated and modified to ensure it stays on top of the game. If you’ve any suggestions or ideas then don’t hesitate to get in touch.</p>
 
 ##Author's profile in social networks:
-<p>LinkedIn: <a href="http://www.linkedin.com/in/evgenykovalchuk" target="_blank">linkedin.com</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/kovalchukevgeny" target="_blank">linkedin.com</a></p>
 <p>VK: <a href="http://vk.com/silent_control" target="_blank">vk.com</a></p>
 <p>Facebook: <a href="https://www.facebook.com/silentc0ntr0l" target="_blank">facebook.com</a></p>
-<p>Twitter: <a href="https://twitter.com/KovalchukEvgeny" target="_blank">twitter.com</a></p>
+<p>Twitter: <a href="https://twitter.com/kovalchukevgeny" target="_blank">twitter.com</a></p>
