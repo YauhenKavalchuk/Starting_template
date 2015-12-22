@@ -14,7 +14,12 @@ body {
   font-family: sans-serif;
   font-size: 1em;
   min-width: 320px;
-  position: relative; }
+  position: relative;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(2); }
 
 .hidden {
   display: none; }
@@ -43,6 +48,7 @@ body {
   /*Disable Animation on Mobile Devices*/
   .animated {
     /*CSS transitions*/
+    -webkit-transition-property: none !important;
     transition-property: none !important;
     /*CSS transforms*/
     -ms-transform: none !important;

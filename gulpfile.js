@@ -32,55 +32,57 @@ gulp.task('connect', ['jade', 'watch'], function() {			// files to inject
 });
 
 /*******************************************************************************\
-		2.	COMPILE JADE IN TO HTML
+		3.	COMPILE JADE IN TO HTML
 \*******************************************************************************/
 
 gulp.task('jade', function() {
-  gulp.src('./app/template/pages/*.jade')
+  gulp.src('./app/template/pages/*.jade')									// get the files
     .pipe(jade())
     .on('error', log)
-    .pipe(prettify({indent_size: 2}))
-    .pipe(gulp.dest('./app/'))
+    .pipe(prettify({indent_size: 2}))											// prettify file
+    .pipe(gulp.dest('./app/'))														// where to put the file
     .pipe(browserSync.stream());
 });
 
 /*******************************************************************************\
-		3.	WATCHER (WATCHING FILE CHANGES)
+		4.	WATCHER (WATCHING FILE CHANGES)
 \*******************************************************************************/
 
 gulp.task('watch', function () {
 	gulp.watch(['./app/template/**/*.jade'], ['jade']);			// watching changes in JADE
 	gulp.watch('bower.json', ['wiredep']);									// watching changes in Wiredep
-	gulp.watch(['./app/sass/*.scss'], ['scss']);						
-	gulp.watch(['./app/js/*.js'], ['js']);
+	gulp.watch(['./app/sass/*.scss'], ['scss']);						// watching changes in SCSS
+	gulp.watch(['./app/js/*.js'], ['js']);									// watching changes in JS
 });
 
 /*******************************************************************************\
-		4.	WIREDEP TASKS
+		5.	WIREDEP TASKS
 \*******************************************************************************/
 
 gulp.task('wiredep', function () {
-	gulp.src('./app/template/pages/*.jade')														
+	gulp.src('./app/template/pages/*.jade')									// get the files
 		.pipe(wiredep({
-			ignorePath: /^(\.\.\/)*\.\./														 
+			ignorePath: /^(\.\.\/)*\.\./												// ignore dotted in 'src'			 
 		}))
-		.pipe(gulp.dest('./app/template/pages/'))																											
+		.pipe(gulp.dest('./app/template/pages/'))							// where to put the changes
 });
-
 /*******************************************************************************\
-		5.	SASS TASKS
+		6.	SASS TASKS
 \*******************************************************************************/
 
 gulp.task('scss', function () {
 	gulp.src('./app/sass/*.scss')														// get the files
-		.pipe(sass({includePaths: require('node-bourbon').includePaths}).on('error', sass.logError))
-		.pipe(autoprefixer({browsers: ['last 3 versions'], cascade: false}))
+		.pipe(sass({
+			includePaths: require('node-bourbon').includePaths	// include 'bourbon'
+		}).on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 3 versions'], cascade: false}))		// include prefixes
 		.pipe(gulp.dest('app/css'))														// where to put the file
 		.pipe(browserSync.stream());													// browsersync stream
 });
 
 /*******************************************************************************\
-		6.	JS TASKS
+		7.	JS TASKS
 \*******************************************************************************/
 
 gulp.task('js', function() {
@@ -89,7 +91,7 @@ gulp.task('js', function() {
 });
 
 /*******************************************************************************\
-		7.	IMAGES TASKS
+		8.	IMAGES TASKS
 \*******************************************************************************/
 
 gulp.task('images', function () {
@@ -98,7 +100,7 @@ gulp.task('images', function () {
 });
 
 /*******************************************************************************\
-		8.	FONTS TASKS
+		9.	FONTS TASKS
 \*******************************************************************************/
 
 gulp.task('fonts', function () {
@@ -107,7 +109,7 @@ gulp.task('fonts', function () {
 });
 
 /*******************************************************************************\
-		9.	LIBS TASKS (PERSONAL DEVELOPER LIBS)
+		10.	LIBS TASKS (PERSONAL DEVELOPER LIBS)
 \*******************************************************************************/
 
 gulp.task('libs', function () {
@@ -116,24 +118,24 @@ gulp.task('libs', function () {
 });
 
 /*******************************************************************************\
-		10.	EXTRASS TASKS (ROOT FILES, EXCEPT HTML-FILES)
+		11.	EXTRASS TASKS (ROOT FILES, EXCEPT HTML-FILES)
 \*******************************************************************************/
 
 gulp.task('extrass', function () {
-	return gulp.src([																				// get the files
+	return gulp.src([																				// get all root's files
 		'app/*.*',
 		'!app/*.html'																					// exept '.html'
 	]).pipe(gulp.dest('dist'))															// where to put the file														
 });
 
 /*******************************************************************************\
-		11.	BUILD TASKS
+		12.	BUILD TASKS
 \*******************************************************************************/
 
 // Clean
 gulp.task('clean', function () {
 	return gulp.src('dist', {read: false})
-		.pipe(clean());																				// clean dir
+		.pipe(clean());																				// clean dir 'dist'
 });
 
 // Build
@@ -149,17 +151,17 @@ gulp.task('build', ['clean'], function () {
 			.pipe(gulpif('*.css', minifyCss({compatibility: 'ie8'})))
 			.pipe(assets.restore())
 			.pipe(useref())
-			.pipe(gulp.dest('./dist'));
+			.pipe(gulp.dest('./dist'));													// where to put the finale project
 });
 
 /*******************************************************************************\
-		12.	DEFAULT TASKS
+		13.	DEFAULT TASKS
 \*******************************************************************************/
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', ['connect', 'watch']);								// DEFAULT TASK
 
 /*******************************************************************************\
-		13.	DEBUGING FUNCTION
+		14.	DEBUGING FUNCTION
 \*******************************************************************************/
 
 var log = function(error) {
