@@ -1,9 +1,4 @@
 /*********************************************\
-		@IMPORT BOURBON
-\*********************************************/
-@import "bourbon";
-
-/*********************************************\
 		@IMPORT VARIABLES
 \*********************************************/
 @import "_variables.scss";
@@ -14,22 +9,35 @@
 @import "_buttons.scss";
 
 /*********************************************\
-		MAIN STYLE
+		MAIN STYLES
 \*********************************************/
 body {
 	font-family: sans-serif;
-	font-size: em(16);
+	font-size: 16px;
 	min-width: 320px;
 	position: relative;
 }
 
-.hidden {
-	display: none;
-}
+/*********************************************\
+		FOOTER AT THE BOTTOM
+\*********************************************/
 
-.carousel img {
-	width: 100%;
-	height: auto;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 0 -100px 0;
+    padding: 0;
+}
+.footer-push, .footer {
+    height: 100px;
+    margin: 0;
+    padding: 0;
 }
 
 /*********************************************\

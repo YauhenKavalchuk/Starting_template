@@ -1,10 +1,10 @@
 /*********************************************\
 		@IMPORT
 \*********************************************/
-@import "bourbon";
+@import "_mixins.scss";
 
 /*********************************************\
 		FONTS
 \*********************************************/
 
-@include font-face("RobotoRegular", "fonts/RobotoRegular/RobotoRegular", $file-formats: eot woff ttf);
+// @include font-face(Samplinal, '../fonts/Samplinal', 500, normal, eot woff2 woff ttf);

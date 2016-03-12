@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-	//Check
-	console.log('Done!');
-
 	//Цели для Яндекс.Метрики и Google Analytics
 	$(".count_element").on("click", (function() {
 		ga("send", "event", "goal", "goal");
@@ -13,7 +10,7 @@ $(document).ready(function() {
 	//jquery.matchHeight.js
 	//Docs: https://github.com/liabru/jquery-match-height
 	$('element').matchHeight();
-	
+
 	//Carousel: http://owlgraphic.com/owlcarousel/
 	$("#owl-example").owlCarousel();
 
@@ -36,5 +33,5 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
+
 });
