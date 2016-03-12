@@ -12,7 +12,8 @@ var gulp = require("gulp"),															// gulp core
 		wiredep = require('wiredep').stream,								// bower dependencies to your source code
 		minifyCss = require('gulp-minify-css'),							// minify the css files
 		autoprefixer = require('gulp-autoprefixer'),				// sets missing browserprefixes
-		browserSync = require('browser-sync').create();			// inject code to all devices
+		browserSync = require('browser-sync').create(),			// inject code to all devices
+		imagemin = require('gulp-imagemin');								// minify images
 
 /*******************************************************************************\
 		2.	BROWSERSYNC (LOCAL SERVEVR)
@@ -72,7 +73,11 @@ gulp.task('js', function() {
 
 gulp.task('images', function () {
 	return gulp.src('./app/img/**/*')											// get the files
-		.pipe(gulp.dest('dist/img'));												// where to put the file
+	.pipe(imagemin({																			// minify files
+		progressive: true,
+		svgoPlugins: [{removeViewBox: false}]
+	}))
+	.pipe(gulp.dest('dist/img'));													// where to put the file
 });
 
 /*******************************************************************************\
