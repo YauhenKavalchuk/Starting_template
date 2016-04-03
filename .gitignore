@@ -1,5 +1,4 @@
 node_modules
-app/bower
+app/ui/bower
 app/sass-cash
-app/css
-dist
+app/ui/css
