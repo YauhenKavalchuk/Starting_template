@@ -28,3 +28,39 @@
 		src: $src;
 	}
 }
+
+/*********************************************/
+		/*PSEUDO*/
+/*********************************************/
+
+@mixin pseudo ($width, $height) {
+  content: ' ';
+  position: absolute;
+  display: block;
+  width: $width;
+  height: $height;
+}
+
+/*********************************************/
+		/*STICKY FOOTER*/
+/*********************************************/
+
+@mixin stiky-footer ($footer-height, $root-selector, $root-footer-selector, $footer-selector) {
+	html, body {
+	    height: 100%;
+	    margin: 0;
+	    padding: 0;
+	}
+	#{$root-selector} {
+	    min-height: 100%;
+	    height: auto !important;
+	    height: 100%;
+	    margin: 0 0 -$footer-height 0;
+	    padding: 0;
+	}
+	#{$root-footer-selector}, #{$footer-selector} {
+	    height: $footer-height;
+	    margin: 0;
+	    padding: 0;
+	}
+}
