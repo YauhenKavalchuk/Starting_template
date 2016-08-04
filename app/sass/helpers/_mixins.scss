@@ -1,0 +1,78 @@
+/*********************************************/
+/*FONT FACE*/
+/*********************************************/
+
+// @include font-face(RalewayBold, '../fonts/raleway-bold', normal, eot woff2 woff ttf);
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+			eot: "?",
+			svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+			otf: "opentype",
+			ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+/*********************************************/
+/*TRIANGLES*/
+/*********************************************/
+
+// $direction: up, down, left, right
+// @include triangle(up, $size: 10px, $color: #222);
+
+@mixin triangle($direction, $size, $color){
+	content: '';
+	display: block;
+	position: absolute;
+	height: 0; width: 0;
+	@if ($direction == 'up'){
+		border-bottom: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'down'){
+		border-top: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'left'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-right: $size solid $color;
+	}
+	@else if ($direction == 'right'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-left: $size solid $color;
+	}
+}
+
+/*********************************************/
+/*CUT TEXT WITH ELLIPSIS*/
+/*********************************************/
+
+// @include text-ellipsis;
+
+@mixin text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
