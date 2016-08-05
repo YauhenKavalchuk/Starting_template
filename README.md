@@ -1,15 +1,14 @@
-#Starting_template
+# Starting_template
+
 Starting template is a front-end HTML5/SCSS/JS template. Featuring the latest technologies and impeccable code this download is the ideal starting point for any web project.
 
-----------
+## Gulp - Start Guide
+> **Need to ensure you have everything on your machine:**<br>
+>1. Node.js<br>
+>2. npm<br>
+>3. Bower<br>
 
-##Gulp - Start Guide
-> **Need to ensure you have everything on your machine:**
->1. Node.js
->2. npm
->3. Bower
-
-####**In root of template, use commands:**
+**In root of template, use commands:**
 <ul>
 	<li>npm i</li>
 	<li>bower i</li>
@@ -17,7 +16,7 @@ Starting template is a front-end HTML5/SCSS/JS template. Featuring the latest te
 	<li>gulp build (Build project)</li>
 </ul>
 
-###SASS Partials
+### SASS Partials
 <p>The partials directory is where most of the CSS is constructed. Plan ahead and think how to structure these.</p>
 <ul>
 	<li>components:
@@ -68,9 +67,9 @@ Starting template is a front-end HTML5/SCSS/JS template. Featuring the latest te
 
 ----------
 ###Author's profile in social networks:
-|                  |                                                                                 |
- ----------------- | --------------------------------------------------------------------------------
-| LinkedIn: | <a href="http://www.linkedin.com/in/evgenykovalchuk" target="_blank">linkedin.com</a>  |          |  |
-| VK:       | <a href="http://vk.com/silent_control" target="_blank">vk.com</a>                      |
-| Facebook: | <a href="https://www.facebook.com/silentc0ntr0l" target="_blank">facebook.com</a>      |
-|Twitter:   | <a href="https://twitter.com/KovalchukEvgeny" target="_blank">twitter.com</a>          |
+| Profile:         | Link:								                    |
+ ----------------- | ----------------------------------------------------------------------------------------
+| LinkedIn: 	   | <a href="http://www.linkedin.com/in/evgenykovalchuk" target="_blank">linkedin.com</a>  |
+| VK:              | <a href="http://vk.com/silent_control" target="_blank">vk.com</a>                      |
+| Facebook:        | <a href="https://www.facebook.com/silentc0ntr0l" target="_blank">facebook.com</a>      |
+|Twitter:          | <a href="https://twitter.com/KovalchukEvgeny" target="_blank">twitter.com</a>          |
