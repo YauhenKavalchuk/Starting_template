@@ -1,17 +1,13 @@
 {
   "name": "start_html",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "authors": [
     "Just_Jack <silent_control@tut.by>"
   ],
   "dependencies": {
     "font-awesome": "^4.6.3",
     "jquery": "^2.1.4",
-    "html5shiv": "^3.7.3",
-    "modernizer": "^2.8.2",
     "waypoints": "^4.0.0",
-    "respond": "^1.4.2",
-    "es5-shim": "^4.1.15",
     "normalize-css": "normalize.css#^3.0.3",
     "matchHeight": "^0.6.0"
   }
