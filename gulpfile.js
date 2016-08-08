@@ -31,9 +31,9 @@ gulp.task('default', ['watch'], function () {           // start server
 /*********************************************/
 
 gulp.task('watch', function () {
-    gulp.watch(['./app/*.html'], ['html']);             // watching changes in HTML
-    gulp.watch(['./app/sass/*.scss'], ['sass']);		// watching changes in SASS
-    gulp.watch(['./app/js/*.js'], ['js']);              // watching changes in JS
+    gulp.watch(['./app/**/*.html'], ['html']);          // watching changes in HTML
+    gulp.watch(['./app/sass/**/*.scss'], ['sass']);     // watching changes in SASS
+    gulp.watch(['./app/js/**/*.js'], ['js']);           // watching changes in JS
     gulp.watch(['./app/img/sprite/*.*'], ['sprite']);   // watching changes in IMAGES
 });
 
@@ -67,8 +67,8 @@ gulp.task('sass', ['sprite'], function () {
 /*********************************************/
 
 gulp.task('js', function () {
-    return gulp.src('./app/js/common.js')				// get the files
-        .pipe(browserSync.stream()); 					// browsersync stream
+    return gulp.src('./app/js/**/*.js')                 // get the files
+        .pipe(browserSync.stream());                    // browsersync stream
 });
 
 /*********************************************/
