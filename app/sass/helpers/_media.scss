@@ -1,27 +1,28 @@
+@import "../components/variables";
 /*********************************************/
 	/*Desktop First Method*/
 /*********************************************/
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px) {
+@media only screen and (max-width : $site) {
 
 }
 
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width : $tablet-landscape) {
 
 }
 
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {	
+@media only screen and (max-width : $tablet) {
 
 }
 
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width : $phone-landscape) {
 
 
 	/*Disable Animation on Mobile Devices*/
@@ -44,13 +45,13 @@
 		-o-animation: none !important;
 		-ms-animation: none !important;
 		animation: none !important;
-	}	
+	}
 }
 
 
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {
-	
+@media only screen and (max-width : $phone) {
+
 }
 
 
@@ -59,30 +60,30 @@
 /*********************************************/
 
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
-	
+@media only screen and (min-width : $phone) {
+
 }
 
 
 /* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
+@media only screen and (min-width : $phone-landscape) {
 
 }
 
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-	
+@media only screen and (min-width : $tablet) {
+
 }
 
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
-	
+@media only screen and (min-width : $tablet-landscape) {
+
 }
 
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-	
+@media only screen and (min-width : $site) {
+
 }
