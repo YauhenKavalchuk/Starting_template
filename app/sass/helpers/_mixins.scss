@@ -2,7 +2,7 @@
 /*FONT FACE*/
 /*********************************************/
 
-// @include font-face(RalewayBold, '../fonts/raleway-bold', normal, eot woff2 woff ttf);
+// @include font-face(RalewayBold, '../fonts/raleway-bold', normal, normal, eot woff2 woff ttf);
 
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
